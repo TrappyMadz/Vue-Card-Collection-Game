@@ -51,6 +51,7 @@ const props = defineProps<{
   align-items: center;
   position: relative;
   width: fit-content;
+  cursor: pointer;
 }
 
 .booster-bg {

@@ -18,6 +18,10 @@ function getCardColor(card: CardType): string {
       return 'green-bg'
     case Type.NORMAL:
       return 'white-bg'
+    case Type.WATA:
+      return 'blue-bg'
+    case Type.STEEL:
+      return 'lightgray-bg'
     default:
       return 'gray-bg'
   }
@@ -130,9 +134,16 @@ function isLegendary(): boolean {
 .white-bg {
   background-color: white;
 }
+.blue-bg {
+  background-color: aqua;
+}
+
+.lightgray-bg {
+  background-color: lightgray;
+}
 
 .gray-bg {
-  background-color: lightgray;
+  background-color: gray;
 }
 
 .card {
@@ -158,6 +169,7 @@ img {
   border: 1px solid #ccc;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
+  background-color: white;
 }
 .attackBlock {
   width: 70%;
