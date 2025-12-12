@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cards, Type, type Card } from '@/data/Cards'
+import { Type, type Card } from '@/data/Cards'
 
 const props = defineProps<{
   card: Card
@@ -36,8 +36,6 @@ function randomOrientation() {
   const seed = props.card.id + 100
   return `${(seededRandom(seed) - 0.5) * 12}deg`
 }
-
-const customOrientation = randomOrientation
 </script>
 
 <template>
@@ -81,7 +79,6 @@ const customOrientation = randomOrientation
   font-weight: 400;
   font-style: normal;
 }
-
 .yellow-bg {
   background-color: yellow;
 }

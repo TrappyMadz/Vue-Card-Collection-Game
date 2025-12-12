@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import Card from '@/components/Card.vue'
-import { cards } from '@/data/Cards'
+import { defaultCard, packs } from '@/data/Cards'
+import { store } from '@/stores/gameStore'
 
-const testCard = cards[0]
+const gameStore = store()
 </script>
 
 <template>
-  <p>Collection works !</p>
-  <div class="a">
-    <Card v-for="card in cards" :card="card"></Card>
+  <div v-for="pack in packs" :key="pack.id">
+    <p>{{ pack.name }} :</p>
+    <div v-for="card in pack.cards">
+      <Card :key="card.id" class="card" :card="card" v-if="gameStore.inventory.has(card.id)"></Card>
+      <Card class="card" :card="defaultCard" v-else></Card>
+    </div>
   </div>
 </template>
 

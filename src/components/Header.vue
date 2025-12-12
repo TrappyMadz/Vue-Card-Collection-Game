@@ -5,13 +5,13 @@
     <nav>
       <ul>
         <li>
-          <a href="/">Menu</a>
+          <router-link to="/">Menu</router-link>
         </li>
         <li>
-          <a href="/boosters">Boosters</a>
+          <router-link to="/boosters">Boosters</router-link>
         </li>
         <li>
-          <a href="/collection">Collection</a>
+          <router-link to="/collection">Collection</router-link>
         </li>
       </ul>
     </nav>

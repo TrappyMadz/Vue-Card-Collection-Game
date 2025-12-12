@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { cards, Rarity } from '../data/Cards'
-import { reactive } from 'vue'
+import { type Pack, Rarity } from '../data/Cards'
+import { reactive, ref } from 'vue'
 import type { Card } from '../data/Cards'
 
 const pick = (array: Card[]): Card => {
@@ -14,6 +14,7 @@ const pick = (array: Card[]): Card => {
 
 export const store = defineStore('gameManager', () => {
   const inventory = reactive(new Set<number>())
+  const currentDraft = ref<Card[]>([])
 
   function unlockCard(cardId: number) {
     if (inventory.has(cardId)) {
@@ -24,7 +25,8 @@ export const store = defineStore('gameManager', () => {
     return true
   }
 
-  function generateBooster() {
+  function generateBooster(pack: Pack) {
+    const cards = pack.cards
     const commons = cards.filter((card) => card.rarity === Rarity.COMMON)
     const uncommons = cards.filter((card) => card.rarity === Rarity.UNCOMMON)
     const legendaries = cards.filter((card) => card.rarity === Rarity.LEGENDARY)
@@ -32,9 +34,17 @@ export const store = defineStore('gameManager', () => {
     return [pick(commons), pick(commons), pick(commons), pick(uncommons), pick(legendaries)]
   }
 
+  function openPack(pack: Pack) {
+    const newCards = generateBooster(pack)
+    currentDraft.value = newCards
+    newCards.forEach((card) => {
+      unlockCard(card.id)
+    })
+  }
+
   return {
     inventory,
-    unlockCard,
-    generateBooster,
+    currentDraft,
+    openPack,
   }
 })
