@@ -95,7 +95,7 @@ function cardIsNew(card: CardType): boolean {
 
 .badge {
   position: absolute;
-  top: -20px;
+  top: -10px;
   left: 85%;
   z-index: 300;
   background: #060161;
