@@ -87,6 +87,7 @@ function cardIsNew(card: CardType): boolean {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .card-wrapper {
