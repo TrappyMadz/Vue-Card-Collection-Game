@@ -44,7 +44,7 @@ function cardIsNew(card: CardType): boolean {
       <div class="card-list">
         <div class="card-wrapper" v-for="(card, index) in gameStore.currentDraft" :key="index">
           <Card :card="card" />
-          <span v-if="cardIsNew(card)" class="badge">Nouveau</span>
+          <span v-if="cardIsNew(card)" class="badge permanent-marker-regular">Nouveau</span>
         </div>
       </div>
     </div>
@@ -52,6 +52,12 @@ function cardIsNew(card: CardType): boolean {
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.permanent-marker-regular {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 .booster-container {
   display: flex;
   justify-content: center;
