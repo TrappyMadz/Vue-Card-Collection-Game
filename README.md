@@ -1,42 +1,72 @@
-# doodle-mon
+# Doodlemon - Card Collection Game
 
-This template should help get you started developing with Vue 3 in Vite.
+Un jeu de collection de cartes développé avec **Vue 3** et **TypeScript**. Le but est d'ouvrir des boosters pour compléter sa collection de créatures dessinées à la main ("Doodlemon").
 
-## Recommended IDE Setup
+🔗 **DÉMO EN LIGNE :** [**Jouer ici**](https://trappymadz.github.io/Vue-Card-Collection-Game/#/)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Recommended Browser Setup
+## Fonctionnalités
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+* **Ouverture de Boosters :** Simulation d'ouverture de paquets avec génération aléatoire de cartes.
+* **Système de Rareté :**
+  * Cartes communes.
+  * Cartes peu communes (Effet brillant subtil).
+  * Cartes légendaires (Effet holographique prismatique et animé).
+* **Gestion de Collection :**
+  * Détection des nouvelles cartes ("Badge Nouveau").
+* **Design "Fait main" :**
+  * Bordures irrégulières générées dynamiquement via JS.
+  * Police "Permanent Marker".
+  * Effets de texture papier et dégradés CSS avancés.
+---
 
-## Type Support for `.vue` Imports in TS
+## Stack Technique
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Le projet utilise une stack moderne et performante :
 
-## Customize configuration
+* **Framework :** [Vue 3](https://vuejs.org/) (Composition API avec `<script setup>`).
+* **Langage :** [TypeScript](https://www.typescriptlang.org/) (Typage strict des Cartes, Packs et du Store).
+* **Build Tool :** [Vite](https://vitejs.dev/) (Pour un développement rapide et un build optimisé).
+* **État (State Management) :** [Pinia](https://pinia.vuejs.org/).
+* **CSS Avancé :**
+  * Utilisation de `mix-blend-mode` (Overlay, Color-Dodge) pour les effets de brillance.
+  * Animations CSS (`keyframes`) pour les apparitions et les reflets.
+  * Variables CSS dynamiques pour les couleurs de types.
+---
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Architecture du Code
 
-## Project Setup
+### 1. Gestion de l'État (`stores/gameStore.ts`)
+L'application utilise **Pinia** pour gérer la logique centrale :
+* **`inventory`** : Un `Set<number>` réactif pour stocker les IDs des cartes possédées.
+* **`currentDraft`** : Stocke temporairement les cartes du booster en cours d'ouverture.
+* **`lastNewCards`** : Une mémoire tampon qui permet d'identifier quelles cartes sont "Nouvelles" lors du tirage actuel, avant qu'elles ne soient fondues dans l'inventaire global.
 
-```sh
+### 2. Composants Clés
+* **`Boosters.vue`** : L'interface principale. Elle gère l'affichage des paquets disponibles et l'overlay d'ouverture. Elle utilise un système de *wrapper* pour gérer les badges de notification au-dessus des cartes (gestion des conflits `z-index` et `overflow`).
+* **`Card.vue`** : Le composant de carte individuel. Il calcule dynamiquement sa couleur de fond selon le type, génère une bordure aléatoire pour l'effet "dessin", et applique les classes CSS d'effets visuels (`legendary-artifice`, `uncommon-artifice`) selon la rareté.
+
+### 3. Effets Visuels (CSS)
+Les effets "Holographiques" (cartes rares) sont réalisés sans images lourdes, uniquement via CSS :
+* Pseudo-éléments `::after` et `::before`.
+* Dégradés linéaires (`linear-gradient`) complexes.
+* Modes de fusion (`overlay`, `color-dodge`, `soft-light`) pour simuler la réaction à la lumière.
+
+Les effets "Holographiques" (cartes légendaires) sont réalisés via un gif et un mode de fusion.
+
+---
+
+## Installation locale
+
+Si vous souhaitez cloner et lancer le projet sur votre machine :
+
+```bash
+# 1. Cloner le repo
+git clone [https://github.com/trappymadz/Vue-Card-Collection-Game.git](https://github.com/trappymadz/Vue-Card-Collection-Game.git)
+
+# 2. Installer les dépendances
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# 3. Lancer le serveur de développement
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
