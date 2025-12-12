@@ -5,7 +5,8 @@
     <h1>Bienvenue dans Doodlemon !</h1>
     <p>
       Doodlemon est un jeu de collection de cartes inspiré d'une license pas trop connue. <br />
-      boosters pour obtenir de nouvelles cartes ou collection pour consulter votre collection.
+      Cliquez sur boosters pour obtenir de nouvelles cartes ou collection pour consulter votre
+      collection.
     </p>
   </main>
 </template>

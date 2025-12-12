@@ -3,12 +3,19 @@ const props = defineProps<{
   title: string
   boosterName: string
   boosterImg: string
+  colorIntensity: number
+  colorVariation: number
 }>()
 </script>
 
 <template>
   <div class="booster">
-    <img src="/img/booster.png" alt="booster background" class="booster-bg" />
+    <img
+      src="/img/booster.png"
+      alt="booster background"
+      class="booster-bg"
+      :style="{ filter: `sepia(${colorIntensity}) hue-rotate(${colorVariation}deg)` }"
+    />
     <div class="boosterInfos permanent-marker-regular">
       <img :src="boosterImg" alt="booster art" class="center-icon" />
       <svg viewBox="0 0 300 300" class="text-overlay">

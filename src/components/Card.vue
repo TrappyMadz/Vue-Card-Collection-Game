@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Type, type Card } from '@/data/Cards'
+import { Type, type CardType } from '@/data/Cards'
 
 const props = defineProps<{
-  card: Card
+  card: CardType
 }>()
-function getCardColor(card: Card): string {
+function getCardColor(card: CardType): string {
   switch (card.type) {
     case Type.ELEC:
       return 'yellow-bg'
@@ -24,7 +24,12 @@ function seededRandom(seed: number) {
 }
 
 function randomPxValue(offset: number) {
-  const seed = props.card.id + offset
+  let seed
+  if (props.card.id) {
+    seed = props.card.id + offset
+  } else {
+    seed = offset
+  }
   return Math.floor(seededRandom(seed) * 25) + 2 + 'px'
 }
 
@@ -33,7 +38,12 @@ function randomBorder() {
 }
 
 function randomOrientation() {
-  const seed = props.card.id + 100
+  let seed
+  if (props.card.id) {
+    seed = props.card.id + 100
+  } else {
+    seed = 100
+  }
   return `${(seededRandom(seed) - 0.5) * 12}deg`
 }
 </script>
@@ -44,17 +54,18 @@ function randomOrientation() {
     :class="getCardColor(props.card)"
     :style="{ borderRadius: randomBorder() }"
   >
+    <slot></slot>
     <div class="cardHeader">
-      <p>{{ props.card.type }}</p>
+      <p v-if="props.card.type">{{ props.card.type }}</p>
       <p>{{ props.card.name }}</p>
-      <p>PV : {{ props.card.hp }}</p>
+      <p v-if="props.card.hp">PV : {{ props.card.hp }}</p>
     </div>
     <img
       :src="props.card.img"
       :alt="props.card.name"
       :style="{ transform: `rotate(${randomOrientation()})` }"
     />
-    <div class="attackBlock">
+    <div class="attackBlock" v-if="props.card.AttackName">
       <div class="attackTitle">
         <p>{{ props.card.AttackName }}</p>
         <p>{{ props.card.AttackDamage }}</p>
@@ -63,8 +74,8 @@ function randomOrientation() {
     </div>
     <div class="bot">
       <div class="cardInfo">
-        <p>{{ props.card.id }}</p>
-        <p>{{ props.card.rarity[0] }}</p>
+        <p v-if="props.card.id">{{ props.card.id }}</p>
+        <p v-if="props.card.rarity">{{ props.card.rarity[0] }}</p>
       </div>
 
       <p>{{ props.card.description }}</p>

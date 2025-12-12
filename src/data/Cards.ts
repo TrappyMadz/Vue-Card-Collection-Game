@@ -13,16 +13,16 @@ export const Type = {
   MIND: 'Mal de Tête',
 }
 
-export interface Card {
-  id: number
+export interface CardType {
+  id?: number
   name: string
-  type: string
-  hp: number
-  AttackName: string
-  AttackDamage: number
+  type?: string
+  hp?: number
+  AttackName?: string
+  AttackDamage?: number
   AttackEffect?: string
   description: string
-  rarity: string
+  rarity?: string
   img: string
 }
 
@@ -30,19 +30,15 @@ export interface Pack {
   id: number
   name: string
   img: string
-  cards: Card[]
+  cards: CardType[]
+  colorIntensity: number
+  colorVariation: number
 }
 
-export const defaultCard: Card = {
-  id: 0,
-  name: '',
-  type: '',
-  hp: 0,
-  AttackName: '',
-  AttackDamage: 0,
-  description: '',
-  img: '',
-  rarity: '',
+export const defaultCard: CardType = {
+  name: 'Inconnue',
+  description: 'Ouvrez des boosters pour découvrir cette carte',
+  img: '/img/unknownCard.png',
 }
 
 // Liste des packs et des cartes
@@ -51,6 +47,8 @@ export const packs: Pack[] = [
     id: 1,
     name: 'Pack de Démarrage',
     img: '/img/boosterArts/starterPack.png',
+    colorIntensity: 0.5,
+    colorVariation: 290,
     cards: [
       {
         id: 1,
