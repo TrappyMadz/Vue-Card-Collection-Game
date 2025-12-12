@@ -50,7 +50,7 @@ export const packs: Pack[] = [
   {
     id: 1,
     name: 'Pack de Démarrage',
-    img: '/img/boosterArts/starterPack.png',
+    img: '/img/starterPack.png',
     colorIntensity: 0.5,
     colorVariation: 290,
     cards: [
@@ -63,7 +63,7 @@ export const packs: Pack[] = [
         AttackDamage: 10,
         description: 'Il vit sous terre et n’aime pas trop être dérangé.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/TropPiqueur.png',
+        img: '/img/TropPiqueur.png',
       },
       {
         id: 2,
@@ -74,7 +74,7 @@ export const packs: Pack[] = [
         AttackDamage: 20,
         description: "Il est toxique, presqu'autant qu'un ex.",
         rarity: Rarity.COMMON,
-        img: 'img/cardArts/MiniFantome.png',
+        img: 'img/MiniFantome.png',
       },
       {
         id: 3,
@@ -85,7 +85,7 @@ export const packs: Pack[] = [
         AttackDamage: 30,
         description: 'Il attaque en tirant ses propres plumes.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/BoudBrin.png',
+        img: '/img/BoudBrin.png',
       },
       {
         id: 4,
@@ -96,7 +96,7 @@ export const packs: Pack[] = [
         AttackDamage: 50,
         description: "L'imposteur est parmi nous.",
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/ImposteurMeta.png',
+        img: '/img/ImposteurMeta.png',
       },
       {
         id: 5,
@@ -107,7 +107,7 @@ export const packs: Pack[] = [
         AttackDamage: 20,
         description: 'Il a toujours faim, même quand il est en train de manger.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/MortPecore.png',
+        img: '/img/MortPecore.png',
       },
       {
         id: 6,
@@ -118,7 +118,7 @@ export const packs: Pack[] = [
         AttackDamage: 100,
         description: 'Il a tendance à exploser tout seul.',
         rarity: Rarity.UNCOMMON,
-        img: '/img/cardArts/ElecBoule.png',
+        img: '/img/ElecBoule.png',
       },
       {
         id: 7,
@@ -129,7 +129,7 @@ export const packs: Pack[] = [
         AttackDamage: 90,
         description: 'Il est surpris, mais par quoi ?',
         rarity: Rarity.UNCOMMON,
-        img: '/img/cardArts/PikaWhat.png',
+        img: '/img/PikaWhat.png',
       },
       {
         id: 8,
@@ -140,7 +140,7 @@ export const packs: Pack[] = [
         AttackDamage: 50,
         description: 'Ses chants reveillent les plus endormis.',
         rarity: Rarity.UNCOMMON,
-        img: '/img/cardArts/Carredoudou.png',
+        img: '/img/Carredoudou.png',
       },
       {
         id: 9,
@@ -151,7 +151,7 @@ export const packs: Pack[] = [
         AttackDamage: 100,
         description: 'Il peut faire tiédir un café sous son souffle chaud.',
         rarity: Rarity.LEGENDARY,
-        img: '/img/cardArts/DragonFeu.png',
+        img: '/img/DragonFeu.png',
       },
       {
         id: 10,
@@ -162,14 +162,14 @@ export const packs: Pack[] = [
         AttackDamage: 110,
         description: 'Elle joue au baseball en utilisant les autres pokémon comme balle.',
         rarity: Rarity.LEGENDARY,
-        img: '/img/cardArts/Martelina.png',
+        img: '/img/Martelina.png',
       },
     ],
   },
   {
     id: 2,
     name: 'Pixel Perfect',
-    img: '/img/boosterArts/PixelPerfect.png',
+    img: '/img/PixelPerfect.png',
     colorIntensity: 0.7,
     colorVariation: 100,
     cards: [
@@ -182,7 +182,7 @@ export const packs: Pack[] = [
         AttackDamage: 10,
         description: 'Il transforme sa nourriture en éléctricité.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/Crisapile.png',
+        img: '/img/Crisapile.png',
       },
       {
         id: 12,
@@ -193,7 +193,7 @@ export const packs: Pack[] = [
         AttackDamage: 20,
         description: 'Rien ne se cache derrière ses grands yeux brillants.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/Pachirisu.png',
+        img: '/img/Pachirisu.png',
       },
       {
         id: 13,
@@ -204,7 +204,7 @@ export const packs: Pack[] = [
         AttackDamage: 80,
         description: 'Chaque noix à sa propre volonté.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/Noadcoco.png',
+        img: '/img/Noadcoco.png',
       },
       {
         id: 14,
@@ -215,7 +215,7 @@ export const packs: Pack[] = [
         AttackDamage: 10,
         description: 'Futur chanteur, il se représente déjà au Zenith.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/Mistherbe.png',
+        img: '/img/Mistherbe.png',
       },
       {
         id: 15,
@@ -226,7 +226,7 @@ export const packs: Pack[] = [
         AttackDamage: 100,
         description: 'Le brainrot nous anéantiras.',
         rarity: Rarity.COMMON,
-        img: '/img/cardArts/Simularbre.png',
+        img: '/img/Simularbre.png',
       },
       {
         id: 16,
@@ -237,7 +237,7 @@ export const packs: Pack[] = [
         AttackDamage: 40,
         description: 'La reine de la chanson, pas très forte en combat.',
         rarity: Rarity.UNCOMMON,
-        img: '/img/cardArts/Otarlette.png',
+        img: '/img/Otarlette.png',
       },
       {
         id: 17,
@@ -248,7 +248,7 @@ export const packs: Pack[] = [
         AttackDamage: 60,
         description: "C'est un dinosaure ? Non, c'est une faute de frappe !",
         rarity: Rarity.UNCOMMON,
-        img: '/img/cardArts/Tritosaure.png',
+        img: '/img/Tritosaure.png',
       },
       {
         id: 18,
@@ -259,7 +259,7 @@ export const packs: Pack[] = [
         AttackDamage: 70,
         description: 'Moussaillon aime bien les cookies.',
         rarity: Rarity.UNCOMMON,
-        img: '/img/cardArts/Moustillon.png',
+        img: '/img/Moustillon.png',
       },
       {
         id: 19,
@@ -270,7 +270,7 @@ export const packs: Pack[] = [
         AttackDamage: 200,
         description: 'Il aime les pommes.',
         rarity: Rarity.LEGENDARY,
-        img: '/img/cardArts/Jirachi.png',
+        img: '/img/Jirachi.png',
       },
       {
         id: 20,
@@ -281,7 +281,7 @@ export const packs: Pack[] = [
         AttackDamage: 120,
         description: 'Elle créer des trou noirs pour proteger son dresseur...',
         rarity: Rarity.LEGENDARY,
-        img: '/img/cardArts/GardeVoir.png',
+        img: '/img/GardeVoir.png',
       },
     ],
   },
