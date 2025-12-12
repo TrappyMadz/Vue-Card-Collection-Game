@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Type, type CardType } from '@/data/Cards'
+import { Type, type CardType, Rarity } from '@/data/Cards'
 
 const props = defineProps<{
   card: CardType
@@ -12,6 +12,12 @@ function getCardColor(card: CardType): string {
       return 'red-bg'
     case Type.MIND:
       return 'purple-bg'
+    case Type.FIGHT:
+      return 'brown-bg'
+    case Type.PLANT:
+      return 'green-bg'
+    case Type.NORMAL:
+      return 'white-bg'
     default:
       return 'gray-bg'
   }
@@ -46,18 +52,30 @@ function randomOrientation() {
   }
   return `${(seededRandom(seed) - 0.5) * 12}deg`
 }
+
+function isUncommon(): boolean {
+  return props.card.rarity === Rarity.UNCOMMON
+}
+
+function isLegendary(): boolean {
+  return props.card.rarity === Rarity.LEGENDARY
+}
 </script>
 
 <template>
   <div
     class="card permanent-marker-regular"
-    :class="getCardColor(props.card)"
+    :class="[
+      getCardColor(props.card),
+      { 'uncommon-artifice': isUncommon() },
+      { 'legendary-artifice': isLegendary() },
+    ]"
     :style="{ borderRadius: randomBorder() }"
   >
     <slot></slot>
     <div class="cardHeader">
       <p v-if="props.card.type">{{ props.card.type }}</p>
-      <p>{{ props.card.name }}</p>
+      <p class="name">{{ props.card.name }}</p>
       <p v-if="props.card.hp">PV : {{ props.card.hp }}</p>
     </div>
     <img
@@ -70,7 +88,6 @@ function randomOrientation() {
         <p>{{ props.card.AttackName }}</p>
         <p>{{ props.card.AttackDamage }}</p>
       </div>
-      <p class="attackEffect">{{ props.card.AttackEffect }}</p>
     </div>
     <div class="bot">
       <div class="cardInfo">
@@ -100,6 +117,18 @@ function randomOrientation() {
 
 .purple-bg {
   background-color: purple;
+}
+
+.brown-bg {
+  background-color: brown;
+}
+
+.green-bg {
+  background-color: green;
+}
+
+.white-bg {
+  background-color: white;
 }
 
 .gray-bg {
@@ -157,5 +186,70 @@ img {
 .cardInfo {
   display: flex;
   gap: 5px;
+}
+
+.uncommon-artifice::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  right: 0;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.6) 45%,
+    rgba(255, 255, 255, 0) 55%,
+    transparent 80%
+  );
+
+  mix-blend-mode: overlay;
+  animation: irregularShine 6s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+}
+
+.legendary-artifice {
+  z-index: 1;
+}
+
+.legendary-artifice::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  background-image: url('/img/sparkles.gif');
+  mix-blend-mode: soft-light;
+}
+
+.name {
+  font-size: 1.2em;
+}
+
+@keyframes irregularShine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 </style>

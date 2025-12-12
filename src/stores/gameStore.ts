@@ -32,7 +32,22 @@ export const store = defineStore('gameManager', () => {
     const uncommons = cards.filter((card) => card.rarity === Rarity.UNCOMMON)
     const legendaries = cards.filter((card) => card.rarity === Rarity.LEGENDARY)
 
-    return [pick(commons), pick(uncommons), pick(legendaries)]
+    if (commons.length < 2) {
+      console.log('Impossible de créer un booster, nombre de carte insuffisant dans le booster')
+      throw Error
+    }
+    if (uncommons.length < 1) {
+      uncommons.concat(commons)
+    }
+    if (legendaries.length < 1) {
+      legendaries.concat(uncommons)
+    }
+
+    if (Math.random() < 0.1) {
+      return [pick(commons), pick(commons), pick(legendaries)]
+    }
+
+    return [pick(commons), pick(commons), pick(uncommons)]
   }
 
   function openPack(pack: Pack) {
