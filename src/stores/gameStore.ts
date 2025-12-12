@@ -1,21 +1,26 @@
 import { defineStore } from 'pinia'
 import { cards, Rarity } from '../data/Cards'
 import { reactive } from 'vue'
+import type { Card } from '../data/Cards'
 
-const pick = (array) => {
+const pick = (array: Card[]): Card => {
   const randomIndex = Math.floor(Math.random() * array.length)
-  return array[randomIndex]
+  const pickedCard = array[randomIndex]
+  if (!pickedCard) {
+    throw new Error('Impossible de piocher, le tableau est vide !')
+  }
+  return pickedCard
 }
 
 export const store = defineStore('gameManager', () => {
-  const inventory = reactive(new Set())
+  const inventory = reactive(new Set<number>())
 
-  function unlockCard(cardId) {
-    if (this.inventory.has(cardId)) {
+  function unlockCard(cardId: number) {
+    if (inventory.has(cardId)) {
       return false
     }
 
-    this.inventory.add(cardId)
+    inventory.add(cardId)
     return true
   }
 

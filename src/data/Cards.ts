@@ -13,8 +13,21 @@ export const Type = {
   MIND: 'Mal de Tête',
 }
 
+export interface Card {
+  id: number
+  name: string
+  type: string
+  hp: number
+  AttackName: string
+  AttackDamage: number
+  AttackEffect?: string
+  description: string
+  rarity: string
+  img: string
+}
+
 // Liste des cartes
-export const cards = [
+export const cards: Card[] = [
   {
     id: 1,
     name: 'Dragon-feu',
@@ -22,9 +35,7 @@ export const cards = [
     hp: 120,
     AttackName: 'Tremoussechaud',
     AttackDamage: 100,
-    AttackEffect: '',
-    description:
-      "Il peut faire tiédir un café sous son souffle chaud. Il est souvent la cause d'une légère montée en température chez son propriètaire.",
+    description: 'Il peut faire tiédir un café sous son souffle chaud',
     rarity: Rarity.LEGENDARY,
     img: '/img/cardArts/DragonFeu.png',
   },
@@ -35,8 +46,7 @@ export const cards = [
     hp: 70,
     AttackName: 'Roue Piquante',
     AttackDamage: 70,
-    AttackEffect: '',
-    description: 'Il a toujours faim, même quand il est en train de manger.',
+    description: 'Il a toujours faim, même quand il est en train de manger',
     rarity: Rarity.COMMON,
     img: '/img/cardArts/MortPecore.png',
   },
@@ -47,9 +57,8 @@ export const cards = [
     hp: 70,
     AttackName: 'Chant terrifiant',
     AttackDamage: 10,
-    AttackEffect: 'Le pokémon adverse est maintenant confus.',
-    description:
-      'Quand ses petit yeux luisent, il se met à chanter un solo de metal, reveillant même les gens aux sommeil le plus lourd.',
+    AttackEffect: 'Provoque confusion',
+    description: 'Ses chants reveillent les plus endormis',
     rarity: Rarity.UNCOMMON,
     img: '/img/cardArts/Carredoudou.png',
   },
