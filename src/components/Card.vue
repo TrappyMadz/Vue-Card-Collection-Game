@@ -76,7 +76,6 @@ function isLegendary(): boolean {
     ]"
     :style="{ borderRadius: randomBorder() }"
   >
-    <slot></slot>
     <div class="cardHeader">
       <p v-if="props.card.type">{{ props.card.type }}</p>
       <p class="name">{{ props.card.name }}</p>

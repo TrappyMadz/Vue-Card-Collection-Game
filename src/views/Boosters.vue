@@ -43,9 +43,8 @@ function cardIsNew(card: CardType): boolean {
       <h2>Nouveau tirage :</h2>
       <div class="card-list">
         <div class="card-wrapper" v-for="(card, index) in gameStore.currentDraft" :key="index">
-          <Card :card="card">
-            <span v-if="cardIsNew(card)" class="badge">Nouveau</span>
-          </Card>
+          <Card :card="card" />
+          <span v-if="cardIsNew(card)" class="badge">Nouveau</span>
         </div>
       </div>
     </div>
