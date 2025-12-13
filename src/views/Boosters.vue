@@ -81,6 +81,7 @@ function cardIsNew(card: CardType): boolean {
 .card-list {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .boosterPage {
